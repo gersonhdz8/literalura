@@ -34,8 +34,12 @@ public class  Autor {
     
     @Override
     public String toString() {
-        return "Autor [nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", fechaFallecimiento="
-                + fechaFallecimiento + "]";
+    return 
+    "|>-------AUTOR-------<|\n" +
+    "  "+"Nombre: " + nombre + "\n" +
+    "  "+"Fecha Nacimiento: " + fechaNacimiento + "\n" +
+    "  "+"Fecha Fallecimiento: " + fechaFallecimiento + "\n" +
+    "|>-------------------<|" + "\n";
     }
 
     public String getNombre() {

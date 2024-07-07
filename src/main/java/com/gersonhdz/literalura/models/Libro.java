@@ -1,6 +1,8 @@
 package com.gersonhdz.literalura.models;
 
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -38,10 +40,7 @@ public class Libro {
 
     
 
-    @Override
-    public String toString() {
-        return "Libro [titulo=" + titulo + ", idioma=" + idioma + ", descargas=" + descargas + ", autor="+ autores + "]";
-    }
+    
 
     public Libro(){}
     
@@ -50,6 +49,19 @@ public class Libro {
         this.idioma = datosLibro.idioma();
         this.descargas = datosLibro.descargas();
         this.autores= datosAutor;
+    }
+    @Override
+    public String toString() {
+        var nombreAutores = autores.stream().map(Autor::getNombre).collect(Collectors.joining(", "));
+        var idiomas = idioma.stream().collect(Collectors.joining(", ")); 
+    return
+    "|>-------LIBRO-------<|        \n" +
+    "  "+"Titulo: " + titulo + "\n" +
+    "  "+"Idioma: " + idiomas + "\n" +
+    "  "+"Descargas: " + descargas + "\n" + 
+    "  "+"Autores: " + nombreAutores + "\n" +
+    "|>-------------------<|" + "\n";
+
     }
 
     public Long getId() {

@@ -1,6 +1,7 @@
 package com.gersonhdz.literalura.principal;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
@@ -26,6 +27,8 @@ public class Principal {
     private ConvertirDatos conversor = new ConvertirDatos();
     private LibroRepository libroRepository;
     private AutorRepository autorRepository;
+    private List <Libro> libros;
+    private List <Autor> autores;
     
     public Principal(LibroRepository libroRepository, AutorRepository autorRepository ) {
         this.libroRepository = libroRepository;
@@ -124,11 +127,19 @@ public class Principal {
 
     public void listarLibrosRegistrados(){
 
-        System.out.println(libroRepository.findAll());
+        libros = libroRepository.findAll();
+        libros.stream()
+        .sorted(Comparator.comparing(Libro::getDescargas).reversed())
+        .forEach(System.out::println);
         
     } 
 
     public void listarAutoresRegistrados(){
+
+        autores = autorRepository.findAll();
+        autores.stream()
+        .sorted(Comparator.comparing(Autor::getNombre))
+        .forEach(System.out::println);       
         
     } 
 
