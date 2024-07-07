@@ -1,9 +1,11 @@
 package com.gersonhdz.literalura.models;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.ManyToMany;
@@ -20,7 +22,7 @@ public class  Autor {
     private String nombre;
     private Integer fechaNacimiento;
     private Integer fechaFallecimiento;
-    @ManyToMany(mappedBy = "autores")
+    @ManyToMany(mappedBy = "autores", fetch = FetchType.EAGER)
     private List<Libro> libros;
 
     public Autor(){}
@@ -34,11 +36,15 @@ public class  Autor {
     
     @Override
     public String toString() {
+        var nombreLibros = libros.stream().map(Libro::getTitulo).collect(Collectors.joining(", "));
+        
     return 
     "|>-------AUTOR-------<|\n" +
     "  "+"Nombre: " + nombre + "\n" +
     "  "+"Fecha Nacimiento: " + fechaNacimiento + "\n" +
     "  "+"Fecha Fallecimiento: " + fechaFallecimiento + "\n" +
+    "  "+"Libros: " + nombreLibros + "\n" +
+    
     "|>-------------------<|" + "\n";
     }
 

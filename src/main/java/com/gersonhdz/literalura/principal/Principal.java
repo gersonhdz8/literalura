@@ -20,9 +20,7 @@ import com.gersonhdz.literalura.services.ConvertirDatos;
 public class Principal {
 
     private  Scanner teclado = new Scanner(System.in);
-    private  ConexionApi api = new ConexionApi();
-    private final String URL_BASE = "https://gutendex.com/books/";
-    private final String URL_BASE_PAGE = "https://gutendex.com/books/?page=";
+    private  ConexionApi api = new ConexionApi();    
     private final String URL_BASE_WORD = "https://gutendex.com/books/?search=";
     private ConvertirDatos conversor = new ConvertirDatos();
     private LibroRepository libroRepository;
@@ -144,10 +142,18 @@ public class Principal {
     } 
 
     public void listarAutoresVivos(){
+        System.out.println("Ingrese el año: ");
+        var fecha = teclado.nextInt();
+        autorRepository.findAutoresByFecha(fecha).stream().forEach(System.out::println);
+
         
     } 
 
     public void listarLibrosPorIdioma(){
+
+        System.out.println("Ingrese tag del idioma. Ejemplo(en): ");
+        var idioma = teclado.nextLine();
+        libroRepository.findLibrosByIdioma(idioma).stream().forEach(System.out::println); 
         
     } 
 
