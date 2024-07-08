@@ -76,23 +76,38 @@ mvn spring-boot:run
 
 Al iniciar la aplicación, se presentará un menú con las siguientes opciones:
 
+![Menu](assets/image.png)
+
 1. **Buscar un libro por título**:
    - Ingresa el título del libro.
    - La aplicación consultará la API externa y guardará la información del libro en la base de datos.
 
+   ![Titulo](assets/image-1.png)
+   ![Resultado](assets/image-2.png)
+
 2. **Listar todos los libros**:
    - La aplicación mostrará una lista de todos los libros almacenados en la base de datos.
 
+   ![Resultado2](assets/image-3.png)
+
 3. **Listar todos los autores**:
    - La aplicación mostrará una lista de todos los autores almacenados en la base de datos.
+
+   ![Resultado3](assets/image-4.png)
 
 4. **Buscar autores vivos en un año determinado**:
    - Ingresa el año.
    - La aplicación mostrará una lista de autores que estaban vivos en el año especificado.
 
+   ![IngresarFecha](assets/image-5.png)
+   ![Resultado4](assets/image-6.png)
+
 5. **Buscar libros por idioma**:
    - Ingresa el idioma.
    - La aplicación mostrará una lista de libros en el idioma especificado almacenados en la base de datos.
+
+   ![tagIdioma](assets/image-7.png)
+   ![Resultado5](assets/image-8.png)
 
 
 
